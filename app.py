@@ -7,7 +7,7 @@ st.set_page_config(page_title="📝 Slimme Samenvatter (NL)", page_icon="🧠", 
 st.title("🧠 Slimme Samenvatter (Nederlands)")
 st.write("Voer een Nederlandse tekst in en ontvang een samenvatting! (Maximaal ongeveer **300 woorden**).")
 
-# Model laden
+# Model laden (nu KBLab/summ-nl)
 @st.cache_resource
 def load_model():
     tokenizer = AutoTokenizer.from_pretrained("KBLab/summ-nl")
