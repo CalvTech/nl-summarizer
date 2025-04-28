@@ -1,5 +1,5 @@
 import streamlit as st
-from transformers import T5Tokenizer, AutoModelForSeq2SeqLM, pipeline
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
 
 # Pagina instellingen
 st.set_page_config(page_title="📝 Slimme Samenvatter (NL)", page_icon="🧠", layout="centered")
@@ -7,11 +7,11 @@ st.set_page_config(page_title="📝 Slimme Samenvatter (NL)", page_icon="🧠", 
 st.title("🧠 Slimme Samenvatter (Nederlands)")
 st.write("Voer een Nederlandse tekst in en ontvang een samenvatting! (Maximaal ongeveer **300 woorden**).")
 
-# Model laden (nu correct T5Tokenizer)
+# Model laden (nu csebuetnlp/mT5_multilingual_XLSum)
 @st.cache_resource
 def load_model():
-    tokenizer = T5Tokenizer.from_pretrained("KBLab/summ-nl")
-    model = AutoModelForSeq2SeqLM.from_pretrained("KBLab/summ-nl")
+    tokenizer = AutoTokenizer.from_pretrained("csebuetnlp/mT5_multilingual_XLSum")
+    model = AutoModelForSeq2SeqLM.from_pretrained("csebuetnlp/mT5_multilingual_XLSum")
     summarizer = pipeline("summarization", model=model, tokenizer=tokenizer)
     return summarizer
 
