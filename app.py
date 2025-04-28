@@ -10,8 +10,8 @@ st.write("Voer een Nederlandse tekst in en ontvang een samenvatting! (Maximaal o
 # Model laden
 @st.cache_resource
 def load_model():
-    tokenizer = AutoTokenizer.from_pretrained("google/mt5-small")
-    model = AutoModelForSeq2SeqLM.from_pretrained("google/mt5-small")
+    tokenizer = AutoTokenizer.from_pretrained("KBLab/summ-nl")
+    model = AutoModelForSeq2SeqLM.from_pretrained("KBLab/summ-nl")
     summarizer = pipeline("summarization", model=model, tokenizer=tokenizer)
     return summarizer
 
