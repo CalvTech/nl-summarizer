@@ -21,14 +21,16 @@ summarizer = load_model()
 # Formulier voor invoer
 with st.form("summarize_form"):
     user_input = st.text_area("📄 Voer hier je tekst in:", height=250)
+    
+    # Toon direct hoeveel woorden zijn ingevoerd
+    word_count = len(user_input.split())
+    st.write(f"✏️ Aantal ingevoerde woorden: **{word_count} woorden** (advies: max 300)")
+
     summary_length = st.slider("Maximale lengte samenvatting (in tokens):", 30, 300, 100)
     submitted = st.form_submit_button("📝 Vat samen!")
 
-# Bij klikken op de knop
 if submitted:
     if user_input.strip():
-        word_count = len(user_input.split())
-
         if word_count > 300:
             st.warning(f"⚠️ Je tekst bevat {word_count} woorden. Probeer onder de 300 woorden te blijven voor beste resultaten!")
 
